@@ -1,9 +1,39 @@
-<div>
-  <div>
-    <h2>Product List</h2>
+<div class="container">
+  <nav class="navbar navbar-light bg-light p-2 mb-4">
+    <input
+      type="text"
+      placeholder="Search.."
+      class="form-control w-50 mr-auto"
+      name="search"
+      (input)="onSearchChange($event)"
+    />
+
+    <ul class="pagination mb-0">
+      <li class="page-item" [class.disabled]="currentPage === 1">
+        <a class="page-link" (click)="goToPage(currentPage - 1)">Previous</a>
+      </li>
+      <li
+        *ngFor="let page of [].constructor(totalPages); let i = index"
+        class="page-item"
+        [class.active]="i + 1 === currentPage"
+      >
+        <a class="page-link" (click)="goToPage(i + 1)">{{ i + 1 }}</a>
+      </li>
+      <li class="page-item" [class.disabled]="currentPage === totalPages">
+        <a class="page-link" (click)="goToPage(currentPage + 1)">Next</a>
+      </li>
+    </ul>
+  </nav>
+  <div class="row">
+    <div class="col-sm-6"></div>
+    <div class="col-sm-6">
+      <nav aria-label="Page navigation "></nav>
+    </div>
   </div>
+  <!-- Pagination Controls -->
+
   <div class="d-flex flex-wrap">
-    <div *ngFor="let product of products" class="card">
+    <div *ngFor="let product of filteredProducts" class="card">
       <img
         [src]="product.imageUrl"
         alt="{{ product.name }}"
@@ -17,7 +47,14 @@
         </h4>
         <p>Price: {{ product.price }}</p>
         <p>{{ product.description }}</p>
-        <button ngbButton type="button" class="btn btn-primary">View</button>
+        <button
+          ngbButton
+          type="button"
+          class="btn btn-primary"
+          (click)="viewProduct(product)"
+        >
+          View
+        </button>
       </div>
     </div>
   </div>

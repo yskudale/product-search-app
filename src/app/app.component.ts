@@ -10,5 +10,5 @@ import { RouterOutlet } from '@angular/router';
   styleUrls: ['./app.component.scss'],  // Corrected property name from styleUrl to styleUrls
 })
 export class AppComponent {
-  title = 'product-search-app';
+  title = 'Product Details';
 }

@@ -5,5 +5,6 @@ export interface Product {
     description: string;
     imageUrl: string;  // Add this line
     imageTitle:string;
+    isInWishlist?: boolean; // Optional property for wishlist status
   }
   
