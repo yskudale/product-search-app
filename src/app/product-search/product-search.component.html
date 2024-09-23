@@ -1,0 +1,24 @@
+<div>
+  <div>
+    <h2>Product List</h2>
+  </div>
+  <div class="d-flex flex-wrap">
+    <div *ngFor="let product of products" class="card">
+      <img
+        [src]="product.imageUrl"
+        alt="{{ product.name }}"
+        title="{{ product.name }}"
+        width="100%"
+        class="product-img-style"
+      />
+      <div class="container">
+        <h4>
+          <b>{{ product.name }}</b>
+        </h4>
+        <p>Price: {{ product.price }}</p>
+        <p>{{ product.description }}</p>
+        <button ngbButton type="button" class="btn btn-primary">View</button>
+      </div>
+    </div>
+  </div>
+</div>
